@@ -1,1 +1,2 @@
 - [x] Build the SS STUDIO 44 website using the uploaded hall, café, bar, and gym imagery.
+- [x] Add all remaining uploaded photos to the Halls, Cafés, Bar Spaces, and Gyms galleries.

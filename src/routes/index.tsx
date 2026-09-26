@@ -24,6 +24,23 @@ import gymNight from "@/assets/studio/image-34.png.asset.json";
 import gymCeiling from "@/assets/studio/image-35.png.asset.json";
 import gymReset from "@/assets/studio/image-36.png.asset.json";
 import gymMachines from "@/assets/studio/image-37.png.asset.json";
+import hallGrand1 from "@/assets/studio/image-2.png.asset.json";
+import hallGrand2 from "@/assets/studio/image-3.png.asset.json";
+import hallGrand3 from "@/assets/studio/image-4.png.asset.json";
+import hallGrand4 from "@/assets/studio/image-5.png.asset.json";
+import hallGrand5 from "@/assets/studio/image-6.png.asset.json";
+import hallGrand6 from "@/assets/studio/image-7.png.asset.json";
+import hallGrand7 from "@/assets/studio/image-8.png.asset.json";
+import cafeStorefront from "@/assets/studio/image.webp.asset.json";
+import cafeTerrace from "@/assets/studio/image-9.png.asset.json";
+import cafeFacade from "@/assets/studio/image-10.png.asset.json";
+import cafeShelves from "@/assets/studio/image-11.png.asset.json";
+import cafeCart from "@/assets/studio/image-12.png.asset.json";
+import cafeMural from "@/assets/studio/image-13.png.asset.json";
+import cafeDisplay from "@/assets/studio/image-14.png.asset.json";
+import cafeCartWall from "@/assets/studio/image-15.png.asset.json";
+import cafeDoor from "@/assets/studio/image-16.png.asset.json";
+import cafeCounter from "@/assets/studio/image-17.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +81,23 @@ const projects = [
   { src: gymCardio.url, category: "Gyms", title: "A brighter way to train", location: "Fitness / Cardio" },
   { src: barLounge.url, category: "Bar Spaces", title: "Mood after dark", location: "Hospitality / Lounge" },
   { src: cafeNight.url, category: "Cafés", title: "A landmark after sunset", location: "Dolci / Exterior" },
+  { src: hallGrand1.url, category: "Halls", title: "Scale, softly framed", location: "Events / Main hall" },
+  { src: hallGrand2.url, category: "Halls", title: "A stage for every gathering", location: "Events / Banquet" },
+  { src: hallGrand3.url, category: "Halls", title: "Volume, with warmth", location: "Events / Celebration hall" },
+  { src: hallGrand4.url, category: "Halls", title: "Designed for the long table", location: "Events / Dining" },
+  { src: hallGrand5.url, category: "Halls", title: "Ceremony in every corner", location: "Events / Reception" },
+  { src: hallGrand6.url, category: "Halls", title: "Where the room holds its breath", location: "Events / Grand hall" },
+  { src: hallGrand7.url, category: "Halls", title: "A canvas for occasions", location: "Events / Hall" },
+  { src: cafeStorefront.url, category: "Cafés", title: "First impressions, in blue", location: "Dolci / Storefront" },
+  { src: cafeTerrace.url, category: "Cafés", title: "Indoor calm, outdoor light", location: "Dolci / Terrace" },
+  { src: cafeFacade.url, category: "Cafés", title: "A façade that invites", location: "Dolci / Street front" },
+  { src: cafeShelves.url, category: "Cafés", title: "Display as architecture", location: "Dolci / Retail wall" },
+  { src: cafeCart.url, category: "Cafés", title: "Craft on wheels", location: "Dolci / Display cart" },
+  { src: cafeMural.url, category: "Cafés", title: "A wall that tells a story", location: "Dolci / Mural" },
+  { src: cafeDisplay.url, category: "Cafés", title: "The counter, centre stage", location: "Dolci / Pastry counter" },
+  { src: cafeCartWall.url, category: "Cafés", title: "Texture, arch, and light", location: "Dolci / Feature wall" },
+  { src: cafeDoor.url, category: "Cafés", title: "Details at the threshold", location: "Dolci / Entry detail" },
+  { src: cafeCounter.url, category: "Cafés", title: "Curves that welcome", location: "Dolci / Service counter" },
 ];
 
 const categoryNotes: Record<Category, string> = {
