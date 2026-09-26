@@ -1,0 +1,1 @@
+- [x] Build the SS STUDIO 44 website using the uploaded hall, café, bar, and gym imagery.
