@@ -55,13 +55,16 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: "SS STUDIO 44 — Spatial design, made precise" },
       { name: "twitter:description", content: "Spatial design for hospitality, wellness, and gathering." },
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      name: "SS STUDIO 44",
-      description: "Spatial design for hospitality, wellness, and gathering.",
-      url: "/",
-    }) }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        name: "SS STUDIO 44",
+        description: "Spatial design for hospitality, wellness, and gathering.",
+        url: "/",
+      }),
+    }],
   }),
   component: StudioHome,
 });
@@ -129,18 +132,45 @@ function StudioHome() {
   return (
     <main className="studio-shell">
       <header className="site-header">
-        <a className="brand-mark" href="#top" aria-label="SS Studio 44 home" onClick={closeMenu}>
-          <span className="brand-monogram">SS</span>
-          <span className="brand-name">STUDIO <b>44</b></span>
+        <a
+          className="brand-mark"
+          href="#top"
+          aria-label="SS Studio 44 home"
+          onClick={closeMenu}
+        >
+          <img
+            src="/44logo.png"
+            alt="SS Studio 44"
+            className="header-logo"
+            width={60}
+            height={60}
+            style={{
+              display: "block",
+              width: 60,
+              height: 60,
+              objectFit: "contain",
+            }}
+          />
         </a>
+
         <nav className={menuOpen ? "main-nav nav-open" : "main-nav"} aria-label="Main navigation">
           <a href="#studio" onClick={closeMenu}>Studio</a>
           <a href="#spaces" onClick={closeMenu}>Spaces</a>
           <a href="#approach" onClick={closeMenu}>Approach</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
-        <a className="header-cta" href="#contact">Start a project <ArrowUpRight size={15} strokeWidth={1.5} /></a>
-        <Button className="menu-button" variant="ghost" size="icon" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen(!menuOpen)}>
+
+        <a className="header-cta" href="#contact">
+          Start a project <ArrowUpRight size={15} strokeWidth={1.5} />
+        </a>
+
+        <Button
+          className="menu-button"
+          variant="ghost"
+          size="icon"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </Button>
       </header>
@@ -155,7 +185,9 @@ function StudioHome() {
           <h1>Designed with<br /><em>vision.</em><br />Executed with precision.</h1>
           <div className="hero-bottomline">
             <p>We create spaces that make people<br className="desktop-only" /> feel something — and remember it.</p>
-            <a className="circle-link" href="#spaces" aria-label="Explore our spaces"><ArrowDownRight size={23} strokeWidth={1.2} /></a>
+            <a className="circle-link" href="#spaces" aria-label="Explore our spaces">
+              <ArrowDownRight size={23} strokeWidth={1.2} />
+            </a>
           </div>
         </div>
         <div className="hero-index">01 <span>/</span> 04</div>
@@ -163,7 +195,9 @@ function StudioHome() {
       </section>
 
       <section className="intro-section section-pad" id="studio">
-        <div className="section-label"><span>01</span><span className="label-line" /><span>THE STUDIO</span></div>
+        <div className="section-label">
+          <span>01</span><span className="label-line" /><span>THE STUDIO</span>
+        </div>
         <div className="intro-grid">
           <h2>There is a<br /><em>story</em> in every<br />space.</h2>
           <div className="intro-copy">
@@ -172,70 +206,193 @@ function StudioHome() {
             <a className="text-link" href="#approach">How we work <ChevronRight size={16} /></a>
           </div>
         </div>
-        <div className="intro-statline"><span>Founded on curiosity</span><span>Built on detail</span><span>Open to possibility</span></div>
+        <div className="intro-statline">
+          <span>Founded on curiosity</span><span>Built on detail</span><span>Open to possibility</span>
+        </div>
       </section>
 
       <section className="feature-section" aria-label="Featured project">
-        <div className="feature-image"><img src={cafeArches.url} alt="Arched café interior with warm light and patterned floor" /></div>
+        <div className="feature-image">
+          <img src={cafeArches.url} alt="Arched café interior with warm light and patterned floor" />
+        </div>
         <div className="feature-copy">
-          <div className="section-label light-label"><span>FEATURED</span><span className="label-line" /><span>01 / 04</span></div>
+          <div className="section-label light-label">
+            <span>FEATURED</span><span className="label-line" /><span>01 / 04</span>
+          </div>
           <p className="eyebrow">Dolci / Café & patisserie</p>
           <h2>Everyday,<br /><em>elevated.</em></h2>
           <p>A space shaped around the art of lingering. Soft arches, confident colour, and details that reveal themselves slowly.</p>
-          <button className="arrow-link" onClick={() => { setActiveCategory("Cafés"); document.getElementById("spaces")?.scrollIntoView({ behavior: "smooth" }); }}>View café spaces <ArrowUpRight size={17} /></button>
+          <button
+            className="arrow-link"
+            onClick={() => {
+              setActiveCategory("Cafés");
+              document.getElementById("spaces")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            View café spaces <ArrowUpRight size={17} />
+          </button>
         </div>
       </section>
 
       <section className="spaces-section section-pad" id="spaces">
         <div className="section-topline">
-          <div className="section-label"><span>02</span><span className="label-line" /><span>SELECTED SPACES</span></div>
+          <div className="section-label">
+            <span>02</span><span className="label-line" /><span>SELECTED SPACES</span>
+          </div>
           <p>{categoryNotes[activeCategory]}</p>
         </div>
-        <div className="spaces-heading"><h2>Made for<br /><em>meaning.</em></h2><span className="project-count">{String(filteredProjects.length).padStart(2, "0")} projects</span></div>
+        <div className="spaces-heading">
+          <h2>Made for<br /><em>meaning.</em></h2>
+          <span className="project-count">{String(filteredProjects.length).padStart(2, "0")} projects</span>
+        </div>
         <div className="category-tabs" role="tablist" aria-label="Project categories">
           {(Object.keys(categoryNotes) as Category[]).map((category) => (
-            <button key={category} type="button" role="tab" aria-selected={activeCategory === category} className={activeCategory === category ? "category-tab active" : "category-tab"} onClick={() => setActiveCategory(category)}>{category}</button>
+            <button
+              key={category}
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === category}
+              className={activeCategory === category ? "category-tab active" : "category-tab"}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
           ))}
         </div>
         <div className="project-grid">
           {filteredProjects.map((project, index) => (
-            <button type="button" className={`project-card project-card-${index % 4}`} key={project.src} onClick={() => setSelectedProject(project)}>
-              <span className="project-photo"><img src={project.src} alt={project.title} loading="lazy" /></span>
-              <span className="project-meta"><span><b>{project.title}</b><small>{project.location}</small></span><ArrowUpRight size={18} strokeWidth={1.3} /></span>
+            <button
+              type="button"
+              className={`project-card project-card-${index % 4}`}
+              key={project.src}
+              onClick={() => setSelectedProject(project)}
+            >
+              <span className="project-photo">
+                <img src={project.src} alt={project.title} loading="lazy" />
+              </span>
+              <span className="project-meta">
+                <span><b>{project.title}</b><small>{project.location}</small></span>
+                <ArrowUpRight size={18} strokeWidth={1.3} />
+              </span>
             </button>
           ))}
         </div>
       </section>
 
       <section className="approach-section section-pad" id="approach">
-        <div className="section-label light-label"><span>03</span><span className="label-line" /><span>OUR APPROACH</span></div>
+        <div className="section-label light-label">
+          <span>03</span><span className="label-line" /><span>OUR APPROACH</span>
+        </div>
         <div className="approach-layout">
           <h2>Good design<br />is felt <em>before</em><br />it is explained.</h2>
           <div className="approach-steps">
-            <div className="approach-step"><span>01</span><div><h3>Listen closely</h3><p>We start with your world: the ambition, the audience, and the feeling you want to leave behind.</p></div></div>
-            <div className="approach-step"><span>02</span><div><h3>Make it clear</h3><p>We turn complexity into a focused design language — material, light, movement, and purpose.</p></div></div>
-            <div className="approach-step"><span>03</span><div><h3>See it through</h3><p>From the first drawing to the last detail, we stay close to the work and the people making it real.</p></div></div>
+            <div className="approach-step">
+              <span>01</span>
+              <div>
+                <h3>Listen closely</h3>
+                <p>We start with your world: the ambition, the audience, and the feeling you want to leave behind.</p>
+              </div>
+            </div>
+            <div className="approach-step">
+              <span>02</span>
+              <div>
+                <h3>Make it clear</h3>
+                <p>We turn complexity into a focused design language — material, light, movement, and purpose.</p>
+              </div>
+            </div>
+            <div className="approach-step">
+              <span>03</span>
+              <div>
+                <h3>See it through</h3>
+                <p>From the first drawing to the last detail, we stay close to the work and the people making it real.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="contact-section section-pad" id="contact">
-        <div className="section-label"><span>04</span><span className="label-line" /><span>LET'S TALK</span></div>
+        <div className="section-label">
+          <span>04</span><span className="label-line" /><span>LET'S TALK</span>
+        </div>
         <div className="contact-layout">
-          <div className="contact-copy"><h2>Have a space<br />in <em>mind?</em></h2><p>Tell us a little about what you’re imagining. We’ll take it from there.</p><div className="contact-note">New projects / Collaborations<br />Bangalore + beyond</div></div>
+          <div className="contact-copy">
+            <h2>Have a space<br />in <em>mind?</em></h2>
+            <p>Tell us a little about what you’re imagining. We’ll take it from there.</p>
+            <div className="contact-note">New projects / Collaborations<br />Bangalore + beyond</div>
+          </div>
           <form className="enquiry-form" onSubmit={handleSubmit}>
-            <label><span>Your name</span><input name="name" required placeholder="How should we call you?" /></label>
-            <label><span>Email or phone</span><input name="contact" required placeholder="Where can we reach you?" /></label>
-            <label><span>What are you creating?</span><select name="category" defaultValue=""><option value="" disabled>Select a space type</option><option>Hall / event space</option><option>Café / restaurant</option><option>Bar space</option><option>Gym / wellness</option><option>Something else</option></select></label>
-            <label><span>A few words</span><textarea name="message" rows={3} placeholder="Tell us about the project, location, and timeline." /></label>
-            <Button className="submit-button" type="submit">{submitted ? "Thank you — we’ll be in touch" : "Start the conversation"} <ArrowUpRight size={17} /></Button>
+            <label>
+              <span>Your name</span>
+              <input name="name" required placeholder="How should we call you?" />
+            </label>
+            <label>
+              <span>Email or phone</span>
+              <input name="contact" required placeholder="Where can we reach you?" />
+            </label>
+            <label>
+              <span>What are you creating?</span>
+              <select name="category" defaultValue="">
+                <option value="" disabled>Select a space type</option>
+                <option>Hall / event space</option>
+                <option>Café / restaurant</option>
+                <option>Bar space</option>
+                <option>Gym / wellness</option>
+                <option>Something else</option>
+              </select>
+            </label>
+            <label>
+              <span>A few words</span>
+              <textarea name="message" rows={3} placeholder="Tell us about the project, location, and timeline." />
+            </label>
+            <Button className="submit-button" type="submit">
+              {submitted ? "Thank you — we’ll be in touch" : "Start the conversation"}
+              <ArrowUpRight size={17} />
+            </Button>
           </form>
         </div>
       </section>
 
-      <footer className="site-footer"><a className="brand-mark footer-brand" href="#top"><span className="brand-monogram">SS</span><span className="brand-name">STUDIO <b>44</b></span></a><p>Spaces with a point of view.</p><div><a href="#studio">Studio</a><a href="#spaces">Spaces</a><a href="#contact">Contact</a></div><span className="footer-year">© 2026 SS STUDIO 44</span></footer>
+      <footer className="site-footer">
+        <a className="brand-mark footer-brand" href="#top">
+          <span className="brand-monogram">SS</span>
+          <span className="brand-name">STUDIO <b>44</b></span>
+        </a>
+        <p>Spaces with a point of view.</p>
+        <div>
+          <a href="#studio">Studio</a>
+          <a href="#spaces">Spaces</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <span className="footer-year">© 2026 SS STUDIO 44</span>
+      </footer>
 
-      {selectedProject && <div className="lightbox" role="dialog" aria-modal="true" aria-label={selectedProject.title} onClick={() => setSelectedProject(null)}><div className="lightbox-inner" onClick={(event) => event.stopPropagation()}><img src={selectedProject.src} alt={selectedProject.title} /><div className="lightbox-caption"><span>{selectedProject.category}</span><b>{selectedProject.title}</b></div><Button variant="ghost" size="icon" className="lightbox-close" aria-label="Close image" onClick={() => setSelectedProject(null)}><X size={24} /></Button></div></div>}
+      {selectedProject && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedProject.title}
+          onClick={() => setSelectedProject(null)}
+        >
+          <div className="lightbox-inner" onClick={(event) => event.stopPropagation()}>
+            <img src={selectedProject.src} alt={selectedProject.title} />
+            <div className="lightbox-caption">
+              <span>{selectedProject.category}</span>
+              <b>{selectedProject.title}</b>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lightbox-close"
+              aria-label="Close image"
+              onClick={() => setSelectedProject(null)}
+            >
+              <X size={24} />
+            </Button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
