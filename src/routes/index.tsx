@@ -1,11 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  ArrowDown,
-  ArrowRight,
-  Menu,
-  X,
-} from "lucide-react";
+import { ArrowDown, ArrowRight, Menu, X } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -73,6 +68,7 @@ const categories = ["All", "Bedrooms", "Halls", "Bar Spaces"];
 function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [menuOpen, setMenuOpen] = useState(false);
+
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[number] | null
   >(null);
@@ -162,7 +158,7 @@ function HomePage() {
 
         <button
           className="menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setMenuOpen((value) => !value)}
           aria-label="Toggle navigation"
         >
           {menuOpen ? <X size={23} /> : <Menu size={23} />}
@@ -209,7 +205,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* STUDIO / INTRO */}
+      {/* STUDIO */}
       <section id="studio" className="intro-section section-pad">
         <div className="section-label">
           <span>01</span>
@@ -256,7 +252,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FEATURE */}
+      {/* FEATURED PROJECT */}
       <section className="feature-section">
         <div className="feature-image">
           <img
@@ -322,7 +318,7 @@ function HomePage() {
           </span>
         </div>
 
-        {/* FILTERS */}
+        {/* CATEGORY FILTER */}
         <div className="category-tabs">
           {categories.map((category) => (
             <button
@@ -346,7 +342,11 @@ function HomePage() {
               onClick={() => setSelectedProject(project)}
             >
               <span className="project-photo">
-                <img src={project.src} alt={project.title} />
+                <img
+                  src={project.src}
+                  alt={project.title}
+                  loading="lazy"
+                />
               </span>
 
               <span className="project-meta">
@@ -438,7 +438,7 @@ function HomePage() {
         <div className="contact-layout">
           <div className="contact-copy">
             <h2>
-              Let's create
+              Let&apos;s create
               <br />
               something
               <br />
@@ -465,7 +465,9 @@ function HomePage() {
             className="enquiry-form"
             onSubmit={(e) => {
               e.preventDefault();
-              alert("Thank you! Your enquiry has been received.");
+              window.alert(
+                "Thank you! Your enquiry has been received.",
+              );
             }}
           >
             <label>
@@ -492,12 +494,30 @@ function HomePage() {
                 <option value="" disabled>
                   Select project type
                 </option>
-                <option>Residential</option>
-                <option>Bedroom</option>
-                <option>Hall</option>
-                <option>Bar / Hospitality</option>
-                <option>Commercial</option>
-                <option>Other</option>
+
+                <option value="Residential">
+                  Residential
+                </option>
+
+                <option value="Bedroom">
+                  Bedroom
+                </option>
+
+                <option value="Hall">
+                  Hall
+                </option>
+
+                <option value="Bar / Hospitality">
+                  Bar / Hospitality
+                </option>
+
+                <option value="Commercial">
+                  Commercial
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
               </select>
             </label>
 
@@ -510,7 +530,10 @@ function HomePage() {
               />
             </label>
 
-            <button type="submit" className="submit-button">
+            <button
+              type="submit"
+              className="submit-button"
+            >
               Send enquiry
               <ArrowRight size={15} />
             </button>
@@ -550,20 +573,27 @@ function HomePage() {
           <a href="#contact">Contact</a>
         </div>
 
-        <span className="footer-year">© 2026</span>
+        <span className="footer-year">
+          © 2026
+        </span>
       </footer>
 
-      {/* IMAGE POPUP */}
+      {/* IMAGE LIGHTBOX */}
       {selectedProject && (
         <div
           className="lightbox"
+          role="presentation"
           onClick={() => setSelectedProject(null)}
         >
           <div
             className="lightbox-inner"
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedProject.title}
             onClick={(e) => e.stopPropagation()}
           >
             <button
+              type="button"
               className="lightbox-close"
               onClick={() => setSelectedProject(null)}
               aria-label="Close image"
@@ -578,11 +608,18 @@ function HomePage() {
 
             <div className="lightbox-caption">
               <div>
-                <span>{selectedProject.category}</span>
-                <b>{selectedProject.title}</b>
+                <span>
+                  {selectedProject.category}
+                </span>
+
+                <b>
+                  {selectedProject.title}
+                </b>
               </div>
 
-              <span>{selectedProject.location}</span>
+              <span>
+                {selectedProject.location}
+              </span>
             </div>
           </div>
         </div>
