@@ -1,15 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, Menu, X } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  Menu,
+  X,
+  Phone,
+  Clock,
+  MessageCircle,
+  Instagram,
+  Facebook,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
 const projects = [
-  // ============================================
+  // =====================================================
   // CAFÉS — IMG 1 TO IMG 15
-  // ============================================
+  // =====================================================
+
   {
     src: "/img1.jpeg",
     category: "Cafés",
@@ -101,9 +114,10 @@ const projects = [
     location: "Café / Entrance",
   },
 
-  // ============================================
+  // =====================================================
   // BAR SPACES — IMG 16 TO IMG 21
-  // ============================================
+  // =====================================================
+
   {
     src: "/img16.jpeg",
     category: "Bar Spaces",
@@ -141,7 +155,8 @@ const projects = [
     location: "Bar / Interior",
   },
 
-  // YOUR NEW BAR IMAGES
+  // YOUR BAR IMAGES
+
   {
     src: "/bar1.jpeg",
     category: "Bar Spaces",
@@ -173,9 +188,10 @@ const projects = [
     location: "Bar / Interior",
   },
 
-  // ============================================
+  // =====================================================
   // HOTELS — IMG 22 TO IMG 28
-  // ============================================
+  // =====================================================
+
   {
     src: "/img22.jpeg",
     category: "Hotels",
@@ -219,7 +235,8 @@ const projects = [
     location: "Hotel / Detail",
   },
 
-  // YOUR BEDROOM IMAGES
+  // YOUR BEDROOM / HOTEL IMAGES
+
   {
     src: "/BED11.jpeg",
     category: "Hotels",
@@ -239,9 +256,10 @@ const projects = [
     location: "Hotel / Bedroom",
   },
 
-  // ============================================
+  // =====================================================
   // GYMS — IMG 29 TO IMG 36
-  // ============================================
+  // =====================================================
+
   {
     src: "/img29.jpeg",
     category: "Gyms",
@@ -291,9 +309,10 @@ const projects = [
     location: "Gym / Entrance",
   },
 
-  // ============================================
+  // =====================================================
   // HALLS — IMG 37 TO IMG 41
-  // ============================================
+  // =====================================================
+
   {
     src: "/img37.jpeg",
     category: "Halls",
@@ -325,7 +344,6 @@ const projects = [
     location: "Events / Grand Hall",
   },
 
-  // YOUR NEW HALL IMAGE
   {
     src: "/HALL11.jpeg",
     category: "Halls",
@@ -343,8 +361,9 @@ const categories = [
   "Hotels",
 ];
 
-// Mix categories in ALL:
-// Hall -> Café -> Bar -> Gym -> Hotel -> repeat
+// MIX ALL CATEGORIES
+// Hall → Café → Bar → Gym → Hotel → repeat
+
 const categoryOrder = [
   "Halls",
   "Cafés",
@@ -355,7 +374,9 @@ const categoryOrder = [
 
 const mixedProjects = (() => {
   const groups = categoryOrder.map((category) =>
-    projects.filter((project) => project.category === category),
+    projects.filter(
+      (project) => project.category === category,
+    ),
   );
 
   const result: typeof projects = [];
@@ -376,7 +397,9 @@ const mixedProjects = (() => {
 })();
 
 function HomePage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] =
+    useState("All");
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [selectedProject, setSelectedProject] = useState<
@@ -392,20 +415,39 @@ function HomePage() {
         );
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-    });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({
+        behavior: "smooth",
+      });
 
     setMenuOpen(false);
   };
 
   return (
     <main>
-      {/* THIS CSS OVERRIDES ONLY THE PROJECT GRID */}
       <style>{`
+
+        /* ======================================
+           HEADER LOGO
+        ====================================== */
+
+        .header-logo {
+          height: 190px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+          transform: translateY(32px);
+        }
+
+        /* ======================================
+           PROJECT GRID
+        ====================================== */
+
         .project-grid {
           display: grid !important;
-          grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr)) !important;
           gap: 34px 24px !important;
           align-items: start;
         }
@@ -438,52 +480,225 @@ function HomePage() {
           object-fit: cover !important;
         }
 
+        /* ======================================
+           PREMIUM FOOTER
+        ====================================== */
+
+        .ss-footer {
+          background: #0b0a08;
+          color: #e9e0d5;
+          padding: 75px 5% 25px;
+          display: grid;
+          grid-template-columns:
+            1.35fr 1fr 1.15fr 1.2fr;
+          gap: 70px;
+          border-top: 1px solid
+            rgba(210, 165, 105, 0.2);
+        }
+
+        .ss-footer-brand img {
+          display: block;
+          width: 200px;
+          height: auto;
+          object-fit: contain;
+          margin-bottom: 25px;
+        }
+
+        .ss-footer-brand p {
+          max-width: 360px;
+          font-size: 16px;
+          line-height: 1.7;
+          color: #a89e93;
+          margin: 0 0 28px;
+        }
+
+        .footer-socials {
+          display: flex;
+          gap: 13px;
+        }
+
+        .footer-socials a {
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          border: 1px solid
+            rgba(213, 163, 93, 0.35);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #b7aca1;
+          transition:
+            color 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .footer-socials a:hover {
+          color: #d5a35d;
+          border-color: #d5a35d;
+          transform: translateY(-2px);
+        }
+
+        .ss-footer-column {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+        }
+
+        .ss-footer-column h3 {
+          color: #d5a35d;
+          font-size: 14px;
+          letter-spacing: 5px;
+          font-weight: 600;
+          margin: 0 0 16px;
+        }
+
+        .ss-footer-column button,
+        .ss-footer-column span,
+        .ss-footer-column a {
+          background: none;
+          border: none;
+          padding: 0;
+          color: #aea39a;
+          font: inherit;
+          font-size: 16px;
+          line-height: 1.4;
+          text-decoration: none;
+          cursor: pointer;
+          transition: color 0.25s ease;
+        }
+
+        .ss-footer-column button:hover,
+        .ss-footer-column a:hover {
+          color: #d5a35d;
+        }
+
+        .ss-footer-contact a,
+        .ss-footer-contact > div {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .ss-footer-contact svg {
+          color: #d5a35d;
+          flex-shrink: 0;
+        }
+
+        .ss-footer .whatsapp-footer-button {
+          margin-top: 10px;
+          border: 1px solid #d5a35d;
+          padding: 13px 18px;
+          color: #d5a35d;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .ss-footer .whatsapp-footer-button:hover {
+          background: #d5a35d;
+          color: #0b0a08;
+        }
+
+        .ss-footer .whatsapp-footer-button:hover svg {
+          color: #0b0a08;
+        }
+
+        .ss-footer-bottom {
+          grid-column: 1 / -1;
+          margin-top: 35px;
+          padding-top: 22px;
+          border-top: 1px solid
+            rgba(255,255,255,0.08);
+          color: #736b64;
+          font-size: 13px;
+          letter-spacing: 1px;
+        }
+
+        /* ======================================
+           RESPONSIVE
+        ====================================== */
+
         @media (max-width: 1200px) {
           .project-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            grid-template-columns:
+              repeat(3, minmax(0, 1fr)) !important;
           }
 
           .project-grid .project-photo {
             height: 310px !important;
           }
+
+          .ss-footer {
+            grid-template-columns:
+              repeat(2, 1fr);
+            gap: 55px;
+          }
         }
 
         @media (max-width: 800px) {
           .project-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr)) !important;
           }
 
           .project-grid .project-photo {
             height: 300px !important;
           }
+
+          .header-logo {
+            height: 145px;
+            transform: translateY(25px);
+          }
+        }
+
+        @media (max-width: 650px) {
+          .ss-footer {
+            grid-template-columns: 1fr;
+            gap: 45px;
+            padding-top: 55px;
+          }
+
+          .ss-footer-brand img {
+            width: 180px;
+          }
         }
 
         @media (max-width: 520px) {
           .project-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns:
+              1fr !important;
           }
 
           .project-grid .project-photo {
             height: 360px !important;
           }
+
+          .header-logo {
+            height: 130px;
+            transform: translateY(22px);
+          }
         }
+
       `}</style>
 
-      {/* HEADER */}
+      {/* ======================================
+          HEADER
+      ====================================== */}
+
       <header className="site-header">
         <button
           className="brand"
-          onClick={() => scrollToSection("home")}
+          onClick={() =>
+            scrollToSection("home")
+          }
           aria-label="SS Studio 44 home"
         >
           <img
+            className="header-logo"
             src="/44logo.png"
             alt="SS Studio 44"
-            style={{
-              height: "160px",
-              width: "auto",
-              objectFit: "contain",
-            }}
           />
         </button>
 
@@ -535,7 +750,9 @@ function HomePage() {
 
         <button
           className="header-cta"
-          onClick={() => scrollToSection("contact")}
+          onClick={() =>
+            scrollToSection("contact")
+          }
         >
           Start a project
           <ArrowRight size={14} />
@@ -544,7 +761,9 @@ function HomePage() {
         <button
           className="menu-button"
           onClick={() =>
-            setMenuOpen((value) => !value)
+            setMenuOpen(
+              (value) => !value,
+            )
           }
           aria-label="Toggle navigation"
         >
@@ -556,14 +775,19 @@ function HomePage() {
         </button>
       </header>
 
-      {/* HERO */}
+      {/* ======================================
+          HERO
+      ====================================== */}
+
       <section
         id="home"
         className="hero"
         style={{
           backgroundImage:
             "linear-gradient(rgba(20,16,13,.45), rgba(20,16,13,.45)), url('/HALL11.jpeg')",
+
           backgroundSize: "cover",
+
           backgroundPosition: "center",
         }}
       >
@@ -580,8 +804,9 @@ function HomePage() {
 
           <div className="hero-bottomline">
             <p>
-              We create thoughtful interiors shaped
-              around people, atmosphere and purpose.
+              We create thoughtful interiors
+              shaped around people,
+              atmosphere and purpose.
             </p>
 
             <button
@@ -605,7 +830,10 @@ function HomePage() {
         </div>
       </section>
 
-      {/* STUDIO */}
+      {/* ======================================
+          STUDIO
+      ====================================== */}
+
       <section
         id="studio"
         className="intro-section section-pad"
@@ -619,44 +847,59 @@ function HomePage() {
           <h2>
             Design that feels
             <br />
-            <em>like it belongs.</em>
+
+            <em>
+              like it belongs.
+            </em>
           </h2>
 
           <div className="intro-copy">
             <p>
-              SS Studio 44 is an interior design
-              studio creating spaces with a strong
-              identity, thoughtful detail and a clear
+              SS Studio 44 is an interior
+              design studio creating spaces
+              with a strong identity,
+              thoughtful detail and a clear
               sense of place.
             </p>
 
             <p>
-              From intimate bedrooms and expressive
-              bar spaces to gathering halls, every
-              project is approached as its own story.
+              From intimate interiors and
+              expressive bar spaces to
+              hospitality, gyms and gathering
+              halls, every project is
+              approached as its own story.
             </p>
 
             <div className="intro-statline">
               <div>
                 <strong>44</strong>
-                <span>Studio identity</span>
+                <span>
+                  Studio identity
+                </span>
               </div>
 
               <div>
                 <strong>01</strong>
-                <span>Design language</span>
+                <span>
+                  Design language
+                </span>
               </div>
 
               <div>
                 <strong>∞</strong>
-                <span>Possibilities</span>
+                <span>
+                  Possibilities
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FEATURE */}
+      {/* ======================================
+          FEATURE
+      ====================================== */}
+
       <section className="feature-section">
         <div className="feature-image">
           <img
@@ -678,14 +921,19 @@ function HomePage() {
           <h2>
             Calm,
             <br />
+
             considered,
             <br />
-            <em>personal.</em>
+
+            <em>
+              personal.
+            </em>
           </h2>
 
           <p>
-            Every material, proportion and detail is
-            chosen to create spaces that feel refined
+            Every material, proportion
+            and detail is chosen to create
+            spaces that feel refined
             without losing warmth.
           </p>
 
@@ -696,12 +944,16 @@ function HomePage() {
             }
           >
             View our spaces
+
             <ArrowRight size={15} />
           </button>
         </div>
       </section>
 
-      {/* PROJECTS */}
+      {/* ======================================
+          PROJECTS
+      ====================================== */}
+
       <section
         id="spaces"
         className="spaces-section section-pad"
@@ -709,13 +961,17 @@ function HomePage() {
         <div className="section-topline">
           <div className="section-label">
             <span>02</span>
-            <span>Selected Spaces</span>
+            <span>
+              Selected Spaces
+            </span>
           </div>
 
           <p>
-            A selection of halls, cafés, bars, gyms
-            and hospitality spaces created with a
-            focus on material, mood and experience.
+            A selection of halls, cafés,
+            bars, gyms and hospitality
+            spaces created with a focus
+            on material, mood and
+            experience.
           </p>
         </div>
 
@@ -723,7 +979,10 @@ function HomePage() {
           <h2>
             Our
             <br />
-            <em>work.</em>
+
+            <em>
+              work.
+            </em>
           </h2>
 
           <span className="project-count">
@@ -734,26 +993,33 @@ function HomePage() {
           </span>
         </div>
 
-        {/* CATEGORY FILTER */}
+        {/* FILTER */}
+
         <div className="category-tabs">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`category-tab ${
-                activeCategory === category
-                  ? "active"
-                  : ""
-              }`}
-              onClick={() =>
-                setActiveCategory(category)
-              }
-            >
-              {category}
-            </button>
-          ))}
+          {categories.map(
+            (category) => (
+              <button
+                key={category}
+                className={`category-tab ${
+                  activeCategory ===
+                  category
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() =>
+                  setActiveCategory(
+                    category,
+                  )
+                }
+              >
+                {category}
+              </button>
+            ),
+          )}
         </div>
 
-        {/* PROJECT GRID */}
+        {/* GRID */}
+
         <div className="project-grid">
           {filteredProjects.map(
             (project, index) => (
@@ -763,7 +1029,9 @@ function HomePage() {
                   index % 7
                 }`}
                 onClick={() =>
-                  setSelectedProject(project)
+                  setSelectedProject(
+                    project,
+                  )
                 }
               >
                 <span className="project-photo">
@@ -776,13 +1044,20 @@ function HomePage() {
 
                 <span className="project-meta">
                   <span>
-                    <b>{project.title}</b>
+                    <b>
+                      {project.title}
+                    </b>
+
                     <small>
-                      {project.location}
+                      {
+                        project.location
+                      }
                     </small>
                   </span>
 
-                  <ArrowRight size={16} />
+                  <ArrowRight
+                    size={16}
+                  />
                 </span>
               </button>
             ),
@@ -790,34 +1065,49 @@ function HomePage() {
         </div>
       </section>
 
-      {/* APPROACH */}
+      {/* ======================================
+          APPROACH
+      ====================================== */}
+
       <section
         id="approach"
         className="approach-section section-pad"
       >
         <div className="section-label">
           <span>03</span>
-          <span>Our Approach</span>
+
+          <span>
+            Our Approach
+          </span>
         </div>
 
         <div className="approach-layout">
           <h2>
             From idea
             <br />
-            to <em>place.</em>
+
+            to{" "}
+            <em>
+              place.
+            </em>
           </h2>
 
           <div className="approach-steps">
+
             <div className="approach-step">
               <span>01</span>
 
               <div>
-                <h3>Understand</h3>
+                <h3>
+                  Understand
+                </h3>
 
                 <p>
-                  We begin with your needs,
-                  lifestyle, context and the feeling
-                  you want the space to create.
+                  We begin with your
+                  needs, lifestyle,
+                  context and the
+                  feeling you want
+                  the space to create.
                 </p>
               </div>
             </div>
@@ -826,12 +1116,16 @@ function HomePage() {
               <span>02</span>
 
               <div>
-                <h3>Define</h3>
+                <h3>
+                  Define
+                </h3>
 
                 <p>
-                  Layout, materials, lighting and
-                  details come together into one
-                  clear design direction.
+                  Layout, materials,
+                  lighting and details
+                  come together into
+                  one clear design
+                  direction.
                 </p>
               </div>
             </div>
@@ -840,12 +1134,16 @@ function HomePage() {
               <span>03</span>
 
               <div>
-                <h3>Refine</h3>
+                <h3>
+                  Refine
+                </h3>
 
                 <p>
-                  Every element is developed
-                  carefully so that function and
-                  visual identity work as one.
+                  Every element is
+                  developed carefully
+                  so that function
+                  and visual identity
+                  work as one.
                 </p>
               </div>
             </div>
@@ -854,42 +1152,59 @@ function HomePage() {
               <span>04</span>
 
               <div>
-                <h3>Realise</h3>
+                <h3>
+                  Realise
+                </h3>
 
                 <p>
-                  The final space is brought to life
-                  with attention to execution,
+                  The final space is
+                  brought to life with
+                  attention to execution,
                   quality and finish.
                 </p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* CONTACT */}
+      {/* ======================================
+          CONTACT
+      ====================================== */}
+
       <section
         id="contact"
         className="contact-section section-pad"
       >
         <div className="section-label">
           <span>04</span>
-          <span>Contact</span>
+
+          <span>
+            Contact
+          </span>
         </div>
 
         <div className="contact-layout">
           <div className="contact-copy">
+
             <h2>
               Let&apos;s create
               <br />
+
               something
               <br />
-              <em>distinct.</em>
+
+              <em>
+                distinct.
+              </em>
             </h2>
 
             <p>
-              Tell us about your space, your ideas
-              and what you would like to create.
+              Tell us about your
+              space, your ideas and
+              what you would like
+              to create.
             </p>
 
             <div className="contact-note">
@@ -901,22 +1216,75 @@ function HomePage() {
               <br />
               Commercial spaces
             </div>
+
           </div>
+
+          {/* WHATSAPP FORM */}
 
           <form
             className="enquiry-form"
             onSubmit={(e) => {
               e.preventDefault();
 
-              window.alert(
-                "Thank you! Your enquiry has been received.",
+              const form =
+                e.currentTarget;
+
+              const name =
+                (
+                  form.elements.namedItem(
+                    "name",
+                  ) as HTMLInputElement
+                )?.value || "";
+
+              const email =
+                (
+                  form.elements.namedItem(
+                    "email",
+                  ) as HTMLInputElement
+                )?.value || "";
+
+              const project =
+                (
+                  form.elements.namedItem(
+                    "project",
+                  ) as HTMLSelectElement
+                )?.value || "";
+
+              const message =
+                (
+                  form.elements.namedItem(
+                    "message",
+                  ) as HTMLTextAreaElement
+                )?.value || "";
+
+              const whatsappMessage =
+                encodeURIComponent(
+`Hello SS Studio 44,
+
+I would like to enquire about a project.
+
+Name: ${name}
+Email: ${email}
+Project Type: ${project}
+
+Message:
+${message}`,
+                );
+
+              window.open(
+                `https://wa.me/919008008877?text=${whatsappMessage}`,
+                "_blank",
               );
             }}
           >
+
             <label>
-              <span>Name</span>
+              <span>
+                Name
+              </span>
 
               <input
+                name="name"
                 type="text"
                 placeholder="Your name"
                 required
@@ -924,9 +1292,12 @@ function HomePage() {
             </label>
 
             <label>
-              <span>Email</span>
+              <span>
+                Email
+              </span>
 
               <input
+                name="email"
                 type="email"
                 placeholder="you@email.com"
                 required
@@ -934,12 +1305,16 @@ function HomePage() {
             </label>
 
             <label>
-              <span>Project type</span>
+              <span>
+                Project type
+              </span>
 
               <select
+                name="project"
                 defaultValue=""
                 required
               >
+
                 <option
                   value=""
                   disabled
@@ -978,13 +1353,17 @@ function HomePage() {
                 <option value="Other">
                   Other
                 </option>
+
               </select>
             </label>
 
             <label>
-              <span>Message</span>
+              <span>
+                Message
+              </span>
 
               <textarea
+                name="message"
                 rows={4}
                 placeholder="Tell us about your project"
                 required
@@ -995,63 +1374,233 @@ function HomePage() {
               type="submit"
               className="submit-button"
             >
-              Send enquiry
-              <ArrowRight size={15} />
+              Enquire on WhatsApp
+
+              <MessageCircle
+                size={17}
+              />
             </button>
+
           </form>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <button
-          className="footer-brand"
-          onClick={() =>
-            scrollToSection("home")
-          }
-          aria-label="SS Studio 44"
-          style={{
-            background: "transparent",
-            border: "none",
-            padding: 0,
-            cursor: "pointer",
-          }}
-        >
-          <img
-            src="/44logo.png"
-            alt="SS Studio 44"
+      {/* ======================================
+          PREMIUM FOOTER
+      ====================================== */}
+
+      <footer className="ss-footer">
+
+        {/* BRAND */}
+
+        <div className="ss-footer-brand">
+
+          <button
+            onClick={() =>
+              scrollToSection("home")
+            }
+            aria-label="SS Studio 44"
             style={{
-              height: "90px",
-              width: "auto",
-              objectFit: "contain",
+              background:
+                "transparent",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
             }}
-          />
-        </button>
+          >
+            <img
+              src="/44logo.png"
+              alt="SS Studio 44"
+            />
+          </button>
 
-        <p>
-          Spaces designed with intention.
-        </p>
+          <p>
+            Thoughtful interiors
+            designed for modern living,
+            hospitality and memorable
+            experiences.
+          </p>
 
-        <div>
-          <a href="#studio">
-            Studio
-          </a>
+          <div className="footer-socials">
 
-          <a href="#spaces">
-            Spaces
-          </a>
+            <a
+              href="#"
+              aria-label="Instagram"
+            >
+              <Instagram size={19} />
+            </a>
 
-          <a href="#contact">
-            Contact
-          </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+            >
+              <Facebook size={19} />
+            </a>
+
+            <a
+              href="#"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={19} />
+            </a>
+
+            <a
+              href="#"
+              aria-label="YouTube"
+            >
+              <Youtube size={19} />
+            </a>
+
+          </div>
         </div>
 
-        <span className="footer-year">
-          © 2026
-        </span>
+        {/* QUICK LINKS */}
+
+        <div className="ss-footer-column">
+
+          <h3>
+            QUICK LINKS
+          </h3>
+
+          <button
+            onClick={() =>
+              scrollToSection("home")
+            }
+          >
+            Home
+          </button>
+
+          <button
+            onClick={() =>
+              scrollToSection("studio")
+            }
+          >
+            About
+          </button>
+
+          <button
+            onClick={() =>
+              scrollToSection("spaces")
+            }
+          >
+            Gallery
+          </button>
+
+          <button
+            onClick={() =>
+              scrollToSection("approach")
+            }
+          >
+            Approach
+          </button>
+
+          <button
+            onClick={() =>
+              scrollToSection("contact")
+            }
+          >
+            Contact
+          </button>
+
+        </div>
+
+        {/* SERVICES */}
+
+        <div className="ss-footer-column">
+
+          <h3>
+            SERVICES
+          </h3>
+
+          <span>
+            Residential Interiors
+          </span>
+
+          <span>
+            Hotels & Hospitality
+          </span>
+
+          <span>
+            Cafés
+          </span>
+
+          <span>
+            Bar Spaces
+          </span>
+
+          <span>
+            Gyms
+          </span>
+
+          <span>
+            Halls & Event Spaces
+          </span>
+
+        </div>
+
+        {/* CONTACT */}
+
+        <div
+          className="
+            ss-footer-column
+            ss-footer-contact
+          "
+        >
+
+          <h3>
+            CONTACT
+          </h3>
+
+          <a href="tel:+919008008877">
+            <Phone size={19} />
+
+            +91 90080 08877
+          </a>
+
+          <a href="tel:+919845046311">
+            <Phone size={19} />
+
+            +91 98450 46311
+          </a>
+
+          <div>
+            <Clock size={19} />
+
+            <span>
+              10:00 AM – 8:00 PM
+            </span>
+          </div>
+
+          <a
+            className="
+              whatsapp-footer-button
+            "
+            href="https://wa.me/919008008877?text=Hello%20SS%20Studio%2044,%20I%20would%20like%20to%20enquire%20about%20an%20interior%20project."
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MessageCircle
+              size={19}
+            />
+
+            WhatsApp Enquiry
+          </a>
+
+        </div>
+
+        {/* COPYRIGHT */}
+
+        <div className="ss-footer-bottom">
+          © 2026 SS Studio 44.
+          All rights reserved.
+        </div>
+
       </footer>
 
-      {/* IMAGE LIGHTBOX */}
+      {/* ======================================
+          IMAGE LIGHTBOX
+      ====================================== */}
+
       {selectedProject && (
         <div
           className="lightbox"
@@ -1071,6 +1620,7 @@ function HomePage() {
               e.stopPropagation()
             }
           >
+
             <button
               type="button"
               className="lightbox-close"
@@ -1088,6 +1638,7 @@ function HomePage() {
             />
 
             <div className="lightbox-caption">
+
               <div>
                 <span>
                   {
@@ -1096,7 +1647,9 @@ function HomePage() {
                 </span>
 
                 <b>
-                  {selectedProject.title}
+                  {
+                    selectedProject.title
+                  }
                 </b>
               </div>
 
@@ -1105,10 +1658,12 @@ function HomePage() {
                   selectedProject.location
                 }
               </span>
+
             </div>
           </div>
         </div>
       )}
+
     </main>
   );
 }
