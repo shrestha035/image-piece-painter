@@ -2,11 +2,44 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowDown, ArrowRight, Menu, X } from "lucide-react";
 
+import cafeArches from "@/assets/studio/image-19.png.asset.json";
+import cafePendant from "@/assets/studio/image-21.png.asset.json";
+import cafeNight from "@/assets/studio/image-22.png.asset.json";
+import barCounter from "@/assets/studio/image-25.png.asset.json";
+import cafeLounge from "@/assets/studio/image-27.png.asset.json";
+import barLounge from "@/assets/studio/image-28.png.asset.json";
+import hallLight from "@/assets/studio/image-29.png.asset.json";
+import hallWindows from "@/assets/studio/image-30.png.asset.json";
+import barWarm from "@/assets/studio/image-31.png.asset.json";
+import gymOrange from "@/assets/studio/image-32.png.asset.json";
+import gymWindows from "@/assets/studio/image-33.png.asset.json";
+import gymCardio from "@/assets/studio/image-2.webp.asset.json";
+
+import hallGrand1 from "@/assets/studio/image-2.png.asset.json";
+import hallGrand2 from "@/assets/studio/image-3.png.asset.json";
+import hallGrand3 from "@/assets/studio/image-4.png.asset.json";
+import hallGrand4 from "@/assets/studio/image-5.png.asset.json";
+import hallGrand5 from "@/assets/studio/image-6.png.asset.json";
+import hallGrand6 from "@/assets/studio/image-7.png.asset.json";
+import hallGrand7 from "@/assets/studio/image-8.png.asset.json";
+
+import cafeStorefront from "@/assets/studio/image.webp.asset.json";
+import cafeTerrace from "@/assets/studio/image-9.png.asset.json";
+import cafeFacade from "@/assets/studio/image-10.png.asset.json";
+import cafeShelves from "@/assets/studio/image-11.png.asset.json";
+import cafeCart from "@/assets/studio/image-12.png.asset.json";
+import cafeMural from "@/assets/studio/image-13.png.asset.json";
+import cafeDisplay from "@/assets/studio/image-14.png.asset.json";
+import cafeCartWall from "@/assets/studio/image-15.png.asset.json";
+import cafeDoor from "@/assets/studio/image-16.png.asset.json";
+import cafeCounter from "@/assets/studio/image-17.png.asset.json";
+
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
 const projects = [
+  // NEW IMAGES
   {
     src: "/BED11.jpeg",
     category: "Bedrooms",
@@ -61,9 +94,196 @@ const projects = [
     title: "A striking display",
     location: "Bar Spaces / Interior",
   },
+
+  // ORIGINAL LOVABLE IMAGES
+  {
+    src: cafeArches.url,
+    category: "Cafés",
+    title: "A room with a point of view",
+    location: "Dolci / Interior",
+  },
+  {
+    src: gymWindows.url,
+    category: "Gyms",
+    title: "Energy, made visible",
+    location: "Fitness / Training floor",
+  },
+  {
+    src: hallWindows.url,
+    category: "Halls",
+    title: "Light finds its rhythm",
+    location: "Events / Main hall",
+  },
+  {
+    src: barWarm.url,
+    category: "Bar Spaces",
+    title: "After hours, elevated",
+    location: "Hospitality / Bar",
+  },
+  {
+    src: cafePendant.url,
+    category: "Cafés",
+    title: "Details worth lingering over",
+    location: "Dolci / Dining",
+  },
+  {
+    src: gymOrange.url,
+    category: "Gyms",
+    title: "A new kind of momentum",
+    location: "Fitness / Strength",
+  },
+  {
+    src: hallLight.url,
+    category: "Halls",
+    title: "Gathering, with intention",
+    location: "Events / Dining hall",
+  },
+  {
+    src: barCounter.url,
+    category: "Bar Spaces",
+    title: "The conversation starts here",
+    location: "Hospitality / Counter",
+  },
+  {
+    src: cafeLounge.url,
+    category: "Cafés",
+    title: "Soft edges, strong identity",
+    location: "Dolci / Lounge",
+  },
+  {
+    src: gymCardio.url,
+    category: "Gyms",
+    title: "A brighter way to train",
+    location: "Fitness / Cardio",
+  },
+  {
+    src: barLounge.url,
+    category: "Bar Spaces",
+    title: "Mood after dark",
+    location: "Hospitality / Lounge",
+  },
+  {
+    src: cafeNight.url,
+    category: "Cafés",
+    title: "A landmark after sunset",
+    location: "Dolci / Exterior",
+  },
+
+  // ORIGINAL HALL IMAGES
+  {
+    src: hallGrand1.url,
+    category: "Halls",
+    title: "Scale, softly framed",
+    location: "Events / Main hall",
+  },
+  {
+    src: hallGrand2.url,
+    category: "Halls",
+    title: "A stage for every gathering",
+    location: "Events / Banquet",
+  },
+  {
+    src: hallGrand3.url,
+    category: "Halls",
+    title: "Volume, with warmth",
+    location: "Events / Celebration hall",
+  },
+  {
+    src: hallGrand4.url,
+    category: "Halls",
+    title: "Designed for the long table",
+    location: "Events / Dining",
+  },
+  {
+    src: hallGrand5.url,
+    category: "Halls",
+    title: "Ceremony in every corner",
+    location: "Events / Reception",
+  },
+  {
+    src: hallGrand6.url,
+    category: "Halls",
+    title: "Where the room holds its breath",
+    location: "Events / Grand hall",
+  },
+  {
+    src: hallGrand7.url,
+    category: "Halls",
+    title: "A canvas for occasions",
+    location: "Events / Hall",
+  },
+
+  // ORIGINAL CAFÉ IMAGES
+  {
+    src: cafeStorefront.url,
+    category: "Cafés",
+    title: "First impressions, in blue",
+    location: "Dolci / Storefront",
+  },
+  {
+    src: cafeTerrace.url,
+    category: "Cafés",
+    title: "Indoor calm, outdoor light",
+    location: "Dolci / Terrace",
+  },
+  {
+    src: cafeFacade.url,
+    category: "Cafés",
+    title: "A façade that invites",
+    location: "Dolci / Street front",
+  },
+  {
+    src: cafeShelves.url,
+    category: "Cafés",
+    title: "Display as architecture",
+    location: "Dolci / Retail wall",
+  },
+  {
+    src: cafeCart.url,
+    category: "Cafés",
+    title: "Craft on wheels",
+    location: "Dolci / Display cart",
+  },
+  {
+    src: cafeMural.url,
+    category: "Cafés",
+    title: "A wall that tells a story",
+    location: "Dolci / Mural",
+  },
+  {
+    src: cafeDisplay.url,
+    category: "Cafés",
+    title: "The counter, centre stage",
+    location: "Dolci / Pastry counter",
+  },
+  {
+    src: cafeCartWall.url,
+    category: "Cafés",
+    title: "Texture, arch, and light",
+    location: "Dolci / Feature wall",
+  },
+  {
+    src: cafeDoor.url,
+    category: "Cafés",
+    title: "Details at the threshold",
+    location: "Dolci / Entry detail",
+  },
+  {
+    src: cafeCounter.url,
+    category: "Cafés",
+    title: "Curves that welcome",
+    location: "Dolci / Service counter",
+  },
 ];
 
-const categories = ["All", "Bedrooms", "Halls", "Bar Spaces"];
+const categories = [
+  "All",
+  "Bedrooms",
+  "Halls",
+  "Cafés",
+  "Bar Spaces",
+  "Gyms",
+];
 
 function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -76,7 +296,9 @@ function HomePage() {
   const filteredProjects =
     activeCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === activeCategory);
+      : projects.filter(
+          (project) => project.category === activeCategory,
+        );
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({
@@ -99,14 +321,16 @@ function HomePage() {
             src="/44logo.png"
             alt="SS Studio 44"
             style={{
-              height: "62px",
+              height: "90px",
               width: "auto",
               objectFit: "contain",
             }}
           />
         </button>
 
-        <nav className={`main-nav ${menuOpen ? "nav-open" : ""}`}>
+        <nav
+          className={`main-nav ${menuOpen ? "nav-open" : ""}`}
+        >
           <a
             href="#studio"
             onClick={(e) => {
@@ -177,7 +401,9 @@ function HomePage() {
         }}
       >
         <div className="hero-content">
-          <p className="eyebrow">Interior architecture · Bengaluru</p>
+          <p className="eyebrow">
+            Interior architecture · Bengaluru
+          </p>
 
           <h1>
             Spaces with
@@ -201,12 +427,17 @@ function HomePage() {
           </div>
 
           <span className="hero-index">SS / 44</span>
-          <span className="scroll-cue">Scroll to explore</span>
+          <span className="scroll-cue">
+            Scroll to explore
+          </span>
         </div>
       </section>
 
       {/* STUDIO */}
-      <section id="studio" className="intro-section section-pad">
+      <section
+        id="studio"
+        className="intro-section section-pad"
+      >
         <div className="section-label">
           <span>01</span>
           <span>The Studio</span>
@@ -221,15 +452,15 @@ function HomePage() {
 
           <div className="intro-copy">
             <p>
-              SS Studio 44 is an interior design studio creating spaces
-              with a strong identity, thoughtful detail and a clear sense
-              of place.
+              SS Studio 44 is an interior design studio
+              creating spaces with a strong identity,
+              thoughtful detail and a clear sense of place.
             </p>
 
             <p>
-              From intimate bedrooms and expressive bar spaces to
-              gathering halls, every project is approached as its own
-              story.
+              From intimate bedrooms and expressive bar
+              spaces to gathering halls, every project is
+              approached as its own story.
             </p>
 
             <div className="intro-statline">
@@ -278,8 +509,9 @@ function HomePage() {
           </h2>
 
           <p>
-            Every material, proportion and detail is chosen to create
-            spaces that feel refined without losing warmth.
+            Every material, proportion and detail is chosen
+            to create spaces that feel refined without
+            losing warmth.
           </p>
 
           <button
@@ -293,7 +525,10 @@ function HomePage() {
       </section>
 
       {/* PROJECTS */}
-      <section id="spaces" className="spaces-section section-pad">
+      <section
+        id="spaces"
+        className="spaces-section section-pad"
+      >
         <div className="section-topline">
           <div className="section-label">
             <span>02</span>
@@ -301,8 +536,9 @@ function HomePage() {
           </div>
 
           <p>
-            A selection of bedrooms, halls and hospitality spaces created
-            with a focus on material, mood and experience.
+            A selection of bedrooms, halls and hospitality
+            spaces created with a focus on material, mood and
+            experience.
           </p>
         </div>
 
@@ -314,7 +550,8 @@ function HomePage() {
           </h2>
 
           <span className="project-count">
-            {String(filteredProjects.length).padStart(2, "0")} projects
+            {String(filteredProjects.length).padStart(2, "0")}{" "}
+            projects
           </span>
         </div>
 
@@ -338,7 +575,9 @@ function HomePage() {
           {filteredProjects.map((project, index) => (
             <button
               key={`${project.src}-${index}`}
-              className={`project-card project-card-${index % 7}`}
+              className={`project-card project-card-${
+                index % 7
+              }`}
               onClick={() => setSelectedProject(project)}
             >
               <span className="project-photo">
@@ -363,7 +602,10 @@ function HomePage() {
       </section>
 
       {/* APPROACH */}
-      <section id="approach" className="approach-section section-pad">
+      <section
+        id="approach"
+        className="approach-section section-pad"
+      >
         <div className="section-label">
           <span>03</span>
           <span>Our Approach</span>
@@ -382,9 +624,11 @@ function HomePage() {
 
               <div>
                 <h3>Understand</h3>
+
                 <p>
-                  We begin with your needs, lifestyle, context and the
-                  feeling you want the space to create.
+                  We begin with your needs, lifestyle,
+                  context and the feeling you want the space
+                  to create.
                 </p>
               </div>
             </div>
@@ -394,9 +638,11 @@ function HomePage() {
 
               <div>
                 <h3>Define</h3>
+
                 <p>
-                  Layout, materials, lighting and details come together
-                  into one clear design direction.
+                  Layout, materials, lighting and details
+                  come together into one clear design
+                  direction.
                 </p>
               </div>
             </div>
@@ -406,9 +652,11 @@ function HomePage() {
 
               <div>
                 <h3>Refine</h3>
+
                 <p>
-                  Every element is developed carefully so that function
-                  and visual identity work as one.
+                  Every element is developed carefully so
+                  that function and visual identity work as
+                  one.
                 </p>
               </div>
             </div>
@@ -418,9 +666,10 @@ function HomePage() {
 
               <div>
                 <h3>Realise</h3>
+
                 <p>
-                  The final space is brought to life with attention to
-                  execution, quality and finish.
+                  The final space is brought to life with
+                  attention to execution, quality and finish.
                 </p>
               </div>
             </div>
@@ -429,7 +678,10 @@ function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="contact-section section-pad">
+      <section
+        id="contact"
+        className="contact-section section-pad"
+      >
         <div className="section-label">
           <span>04</span>
           <span>Contact</span>
@@ -446,8 +698,8 @@ function HomePage() {
             </h2>
 
             <p>
-              Tell us about your space, your ideas and what you would like
-              to create.
+              Tell us about your space, your ideas and what
+              you would like to create.
             </p>
 
             <div className="contact-note">
@@ -465,6 +717,7 @@ function HomePage() {
             className="enquiry-form"
             onSubmit={(e) => {
               e.preventDefault();
+
               window.alert(
                 "Thank you! Your enquiry has been received.",
               );
@@ -472,6 +725,7 @@ function HomePage() {
           >
             <label>
               <span>Name</span>
+
               <input
                 type="text"
                 placeholder="Your name"
@@ -481,6 +735,7 @@ function HomePage() {
 
             <label>
               <span>Email</span>
+
               <input
                 type="email"
                 placeholder="you@email.com"
@@ -490,6 +745,7 @@ function HomePage() {
 
             <label>
               <span>Project type</span>
+
               <select defaultValue="" required>
                 <option value="" disabled>
                   Select project type
@@ -499,13 +755,9 @@ function HomePage() {
                   Residential
                 </option>
 
-                <option value="Bedroom">
-                  Bedroom
-                </option>
+                <option value="Bedroom">Bedroom</option>
 
-                <option value="Hall">
-                  Hall
-                </option>
+                <option value="Hall">Hall</option>
 
                 <option value="Bar / Hospitality">
                   Bar / Hospitality
@@ -515,14 +767,13 @@ function HomePage() {
                   Commercial
                 </option>
 
-                <option value="Other">
-                  Other
-                </option>
+                <option value="Other">Other</option>
               </select>
             </label>
 
             <label>
               <span>Message</span>
+
               <textarea
                 rows={4}
                 placeholder="Tell us about your project"
@@ -558,7 +809,7 @@ function HomePage() {
             src="/44logo.png"
             alt="SS Studio 44"
             style={{
-              height: "65px",
+              height: "90px",
               width: "auto",
               objectFit: "contain",
             }}
@@ -573,9 +824,7 @@ function HomePage() {
           <a href="#contact">Contact</a>
         </div>
 
-        <span className="footer-year">
-          © 2026
-        </span>
+        <span className="footer-year">© 2026</span>
       </footer>
 
       {/* IMAGE LIGHTBOX */}
@@ -608,18 +857,11 @@ function HomePage() {
 
             <div className="lightbox-caption">
               <div>
-                <span>
-                  {selectedProject.category}
-                </span>
-
-                <b>
-                  {selectedProject.title}
-                </b>
+                <span>{selectedProject.category}</span>
+                <b>{selectedProject.title}</b>
               </div>
 
-              <span>
-                {selectedProject.location}
-              </span>
+              <span>{selectedProject.location}</span>
             </div>
           </div>
         </div>
